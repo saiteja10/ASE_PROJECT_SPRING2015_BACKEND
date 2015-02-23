@@ -39,8 +39,12 @@
 
         <!-- Drop and re-create the database schema on startup -->
         <!-- <property styleName="hbm2ddl.auto">update</property> -->
+        <mapping class="com.ase.domain.Category"/>
+        <mapping class="com.ase.domain.Item"/>
+        <mapping class="com.ase.domain.ItemLocation"/>
+        <mapping class="com.ase.domain.ItemLocationMapping"/>
+        <mapping class="com.ase.domain.SubCategory"/>
         <mapping class="com.ase.domain.User"/>
-
     </session-factory>
 
 </hibernate-configuration>

@@ -1,13 +1,12 @@
 package com.ase.api.service;
 
 import com.ase.bean.BaseBean;
+import com.ase.bean.RegisterBean;
 import org.apache.cxf.jaxrs.model.wadl.ElementClass;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -16,8 +15,14 @@ import javax.ws.rs.core.MediaType;
 @Service
 @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 public interface LoginService {
-    @Path("/login")
+    @Path("")
     @POST
     @ElementClass(response = BaseBean.class)
-    public String login(@RequestParam("username") String username, @RequestParam("password") String password);
+    public BaseBean login(@QueryParam("username") String username, @QueryParam("password") String password);
+
+    @Path("/register")
+    @PUT
+    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @ElementClass(request = RegisterBean.class, response = BaseBean.class)
+    public BaseBean register(BaseBean baseBean);
 }

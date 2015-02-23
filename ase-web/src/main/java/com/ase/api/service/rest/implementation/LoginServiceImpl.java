@@ -1,6 +1,7 @@
 package com.ase.api.service.rest.implementation;
 
 import com.ase.api.service.LoginService;
+import com.ase.bean.BaseBean;
 import com.sun.xml.bind.v2.TODO;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,9 +16,14 @@ import javax.ws.rs.core.MediaType;
 public class LoginServiceImpl implements LoginService {
 
     @Override
-    public String login(String username, String password) {
+    public BaseBean login(String username, String password) {
 
 
-        return "login";
+        return null;
+    }
+
+    @Override
+    public BaseBean register(BaseBean baseBean) {
+        return null;
     }
 }
