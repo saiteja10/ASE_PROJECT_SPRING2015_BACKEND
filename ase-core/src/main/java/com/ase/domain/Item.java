@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by Gurrala on 2/22/2015.
  */
 @Entity
-@Table(name = "user")
+@Table(name = "item")
 @PrimaryKeyJoinColumn(name = "id")
 public class Item extends Base {
     private String name;

@@ -13,8 +13,6 @@ import javax.persistence.Table;
 @PrimaryKeyJoinColumn(name = "id")
 public class User extends Base {
     @Column(unique = true)
-    private String userName;
-    @Column(unique = true)
     private String email;
     private String password;
     private String firstName;
@@ -34,14 +32,6 @@ public class User extends Base {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
     }
 
     public String getEmail() {

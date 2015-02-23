@@ -2,6 +2,8 @@ package com.ase.bean;
 
 import org.codehaus.jackson.map.ObjectMapper;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Vivek
@@ -9,6 +11,7 @@ import org.codehaus.jackson.map.ObjectMapper;
  * Time: 12:46 PM
  * To change this template use File | Settings | File Templates.
  */
+@XmlRootElement(namespace = "ase")
 public class SuperDTO {
     private Boolean success = true;
     private String message;

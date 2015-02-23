@@ -1,11 +1,14 @@
 package com.ase.api.service.rest.implementation;
 
+import com.ase.api.aop.MyTransaction;
 import com.ase.api.service.LoginService;
 import com.ase.bean.BaseBean;
-import com.sun.xml.bind.v2.TODO;
+import com.ase.bean.RegisterBean;
+import com.ase.handler.LoginHandler;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.inject.Inject;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -14,16 +17,18 @@ import javax.ws.rs.core.MediaType;
  */
 @Service
 public class LoginServiceImpl implements LoginService {
+    @Inject
+    LoginHandler loginHandler;
 
+    @MyTransaction
     @Override
-    public BaseBean login(String username, String password) {
-
-
-        return null;
+    public BaseBean login(String username, String password) throws Exception {
+        return loginHandler.login(username, password);
     }
 
+    @MyTransaction
     @Override
-    public BaseBean register(BaseBean baseBean) {
-        return null;
+    public BaseBean register(RegisterBean registerBean) {
+        return loginHandler.register(registerBean);
     }
 }

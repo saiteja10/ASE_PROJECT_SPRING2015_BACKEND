@@ -1,9 +1,12 @@
 package com.ase.bean;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Created by Gurrala on 2/22/2015.
  */
-public class RegisterBean {
+@XmlRootElement(namespace = "ase")
+public class RegisterBean extends BaseBean {
     private String firstName, lastName, email, password;
 
     public String getFirstName() {

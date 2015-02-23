@@ -15,14 +15,14 @@ import javax.ws.rs.core.MediaType;
 @Service
 @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 public interface LoginService {
-    @Path("")
-    @POST
-    @ElementClass(response = BaseBean.class)
-    public BaseBean login(@QueryParam("username") String username, @QueryParam("password") String password);
-
     @Path("/register")
     @PUT
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     @ElementClass(request = RegisterBean.class, response = BaseBean.class)
-    public BaseBean register(BaseBean baseBean);
+    public BaseBean register(@QueryParam("") RegisterBean registerBean);
+
+    @Path("/")
+    @POST
+    @ElementClass(response = BaseBean.class)
+    public BaseBean login(@QueryParam("username") String username, @QueryParam("password") String password) throws Exception;
 }
