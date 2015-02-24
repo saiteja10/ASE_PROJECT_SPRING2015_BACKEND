@@ -22,8 +22,8 @@ public class LoginServiceImpl implements LoginService {
 
     @MyTransaction
     @Override
-    public BaseBean login(String username, String password) throws Exception {
-        return loginHandler.login(username, password);
+    public BaseBean login(String username, String password, Boolean isEmployee) throws Exception {
+        return loginHandler.login(username, password, isEmployee);
     }
 
     @MyTransaction
