@@ -2,7 +2,9 @@ package com.ase.handler;
 
 import com.ase.bean.BaseBean;
 import com.ase.bean.RegisterBean;
+import com.ase.dao.EmployeeDAO;
 import com.ase.dao.UserDAO;
+import com.ase.domain.Employee;
 import com.ase.domain.User;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -16,16 +18,28 @@ import javax.inject.Inject;
 public class LoginHandler {
     @Inject
     UserDAO userDAO;
+    @Inject
+    EmployeeDAO employeeDAO;
 
-    public BaseBean login(String username, String password) throws Exception {
+    public BaseBean login(String username, String password, Boolean isEmployee) throws Exception {
         String pwd = encodePassword(password, username);
-        User user = userDAO.verifyUser(username, pwd);
-        if (user != null) {
-            BaseBean baseBean =  new BaseBean();
-            baseBean.setId(user.getId());
-            return baseBean;
-        } else
-        throw new Exception("Unauthorized User");
+        if (isEmployee != null && isEmployee) {
+            Employee user = employeeDAO.verifyEmployee(username, pwd);
+            if (user != null) {
+                BaseBean baseBean = new BaseBean();
+                baseBean.setId(user.getId());
+                return baseBean;
+            } else
+                throw new Exception("Unauthorized Employee");
+        } else {
+            User user = userDAO.verifyUser(username, pwd);
+            if (user != null) {
+                BaseBean baseBean = new BaseBean();
+                baseBean.setId(user.getId());
+                return baseBean;
+            } else
+                throw new Exception("Unauthorized User");
+        }
     }
 
     public BaseBean register(RegisterBean registerBean) {

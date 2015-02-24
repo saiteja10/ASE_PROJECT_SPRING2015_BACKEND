@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * Created by Gurrala on 2/22/2015.
  */
 @XmlRootElement(namespace = "ase")
-public class RegisterBean extends BaseBean {
+public class RegisterBean {
     private String firstName, lastName, email, password;
 
     public String getFirstName() {

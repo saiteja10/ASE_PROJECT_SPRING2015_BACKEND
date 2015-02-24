@@ -24,5 +24,6 @@ public interface LoginService {
     @Path("/")
     @POST
     @ElementClass(response = BaseBean.class)
-    public BaseBean login(@QueryParam("username") String username, @QueryParam("password") String password) throws Exception;
+    public BaseBean login(@QueryParam("username") String username, @QueryParam("password") String password,
+                          @QueryParam("isEmployee") Boolean isEmployee) throws Exception;
 }
