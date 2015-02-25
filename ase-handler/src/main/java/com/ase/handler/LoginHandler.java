@@ -2,6 +2,7 @@ package com.ase.handler;
 
 import com.ase.bean.BaseBean;
 import com.ase.bean.RegisterBean;
+import com.ase.bean.UserBean;
 import com.ase.dao.EmployeeDAO;
 import com.ase.dao.UserDAO;
 import com.ase.domain.Employee;
@@ -21,22 +22,33 @@ public class LoginHandler {
     @Inject
     EmployeeDAO employeeDAO;
 
-    public BaseBean login(String username, String password, Boolean isEmployee) throws Exception {
+    public UserBean login(String username, String password, Boolean isEmployee) throws Exception {
         String pwd = encodePassword(password, username);
         if (isEmployee != null && isEmployee) {
-            Employee user = employeeDAO.verifyEmployee(username, pwd);
-            if (user != null) {
-                BaseBean baseBean = new BaseBean();
-                baseBean.setId(user.getId());
-                return baseBean;
+            Employee employee = employeeDAO.verifyEmployee(username, pwd);
+            if (employee != null) {
+                UserBean userBean = new UserBean();
+                userBean.setId(employee.getId());
+                if(employee.getIsAdmin())
+                    userBean.setType("admin");
+                else
+                userBean.setType("employee");
+                userBean.setFirstName(employee.getFirstName());
+                userBean.setLastName(employee.getLastName());
+                userBean.setEmail(employee.getEmail());
+                return userBean;
             } else
                 throw new Exception("Unauthorized Employee");
         } else {
             User user = userDAO.verifyUser(username, pwd);
             if (user != null) {
-                BaseBean baseBean = new BaseBean();
-                baseBean.setId(user.getId());
-                return baseBean;
+                UserBean userBean = new UserBean();
+                userBean.setId(user.getId());
+                userBean.setFirstName(user.getFirstName());
+                userBean.setLastName(user.getLastName());
+                userBean.setEmail(user.getEmail());
+                userBean.setType("user");
+                return userBean;
             } else
                 throw new Exception("Unauthorized User");
         }

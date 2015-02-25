@@ -4,6 +4,7 @@ import com.ase.api.aop.MyTransaction;
 import com.ase.api.service.LoginService;
 import com.ase.bean.BaseBean;
 import com.ase.bean.RegisterBean;
+import com.ase.bean.UserBean;
 import com.ase.handler.LoginHandler;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,7 +23,7 @@ public class LoginServiceImpl implements LoginService {
 
     @MyTransaction
     @Override
-    public BaseBean login(String username, String password, Boolean isEmployee) throws Exception {
+    public UserBean login(String username, String password, Boolean isEmployee) throws Exception {
         return loginHandler.login(username, password, isEmployee);
     }
 

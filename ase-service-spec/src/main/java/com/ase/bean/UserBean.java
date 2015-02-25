@@ -1,23 +1,17 @@
-package com.ase.domain;
+package com.ase.bean;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * Created by Gurrala on 2/24/2015.
+ * Created by Gurrala on 2/25/2015.
  */
-@Entity
-@Table(name = "employee")
-@PrimaryKeyJoinColumn(name = "id")
-public class Employee extends Base {
-    @Column(unique = true)
+@XmlRootElement(namespace = "ase")
+public class UserBean extends BaseBean {
     private String email;
     private String password;
     private String firstName;
     private String lastName;
-    private Boolean isAdmin;
+    private String type;
 
     public String getEmail() {
         return email;
@@ -51,11 +45,11 @@ public class Employee extends Base {
         this.lastName = lastName;
     }
 
-    public Boolean getIsAdmin() {
-        return isAdmin;
+    public String getType() {
+        return type;
     }
 
-    public void setIsAdmin(Boolean isAdmin) {
-        this.isAdmin = isAdmin;
+    public void setType(String type) {
+        this.type = type;
     }
 }

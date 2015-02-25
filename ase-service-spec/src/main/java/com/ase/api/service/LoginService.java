@@ -2,6 +2,7 @@ package com.ase.api.service;
 
 import com.ase.bean.BaseBean;
 import com.ase.bean.RegisterBean;
+import com.ase.bean.UserBean;
 import org.apache.cxf.jaxrs.model.wadl.ElementClass;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,7 +24,7 @@ public interface LoginService {
 
     @Path("/")
     @POST
-    @ElementClass(response = BaseBean.class)
-    public BaseBean login(@QueryParam("username") String username, @QueryParam("password") String password,
+    @ElementClass(response = UserBean.class)
+    public UserBean login(@QueryParam("username") String username, @QueryParam("password") String password,
                           @QueryParam("isEmployee") Boolean isEmployee) throws Exception;
 }
