@@ -46,4 +46,13 @@
             <bean class="com.ase.api.service.rest.implementation.LoginServiceImpl"/>
         </jaxrs:serviceBeans>
     </jaxrs:server>
+    <jaxrs:server id="catalog" address="/catalog">
+        <jaxrs:providers>
+            <ref bean="jacksonJsonProvider"/>
+            <ref bean="wadlProvider"/>
+        </jaxrs:providers>
+        <jaxrs:serviceBeans>
+            <bean class="com.ase.api.service.rest.implementation.CatalogServiceImpl"/>
+        </jaxrs:serviceBeans>
+    </jaxrs:server>
 </beans>

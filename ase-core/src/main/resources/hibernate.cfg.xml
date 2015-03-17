@@ -44,6 +44,8 @@
         <mapping class="com.ase.domain.Item"/>
         <mapping class="com.ase.domain.ItemLocation"/>
         <mapping class="com.ase.domain.ItemLocationMapping"/>
+        <mapping class="com.ase.domain.Restaurant"/>
+        <mapping class="com.ase.domain.RestaurantSubCategoryMapping"/>
         <mapping class="com.ase.domain.SubCategory"/>
         <mapping class="com.ase.domain.User"/>
     </session-factory>

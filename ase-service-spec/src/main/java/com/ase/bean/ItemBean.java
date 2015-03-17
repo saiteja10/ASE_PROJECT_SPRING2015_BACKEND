@@ -1,20 +1,16 @@
-package com.ase.domain;
+package com.ase.bean;
 
-import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * Created by Gurrala on 2/22/2015.
+ * Created by Gurrala on 3/16/2015.
  */
-@Entity
-@Table(name = "item")
-@PrimaryKeyJoinColumn(name = "id")
-public class Item extends Base {
+@XmlRootElement(namespace = "ase")
+public class ItemBean extends BaseBean {
     private String name;
     private Double price;
     private String description;
-    @ManyToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "subCategoryId", nullable = false)
-    private SubCategory subCategory;
+    private Long subCategoryId;
 
     public String getName() {
         return name;
@@ -32,19 +28,19 @@ public class Item extends Base {
         this.price = price;
     }
 
-    public SubCategory getSubCategory() {
-        return subCategory;
-    }
-
-    public void setSubCategory(SubCategory subCategory) {
-        this.subCategory = subCategory;
-    }
-
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Long getSubCategoryId() {
+        return subCategoryId;
+    }
+
+    public void setSubCategoryId(Long subCategoryId) {
+        this.subCategoryId = subCategoryId;
     }
 }
